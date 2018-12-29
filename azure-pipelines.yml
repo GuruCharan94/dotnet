@@ -42,8 +42,7 @@ steps:
 - task: PowerShell@2
   displayName: 'Build / Test / Create Packages'
   inputs:
-    targetType: ./
-
+    targetType: filePath
     filePath: build.AzureDevops.ps1
 
 
@@ -51,9 +50,7 @@ steps:
   displayName: 'Publish Test Results **/Test-*.xml'
   inputs:
     testResultsFormat: XUnit
-
     testResultsFiles: '**/Test-*.xml'
-
     mergeTestResults: true
 
 
