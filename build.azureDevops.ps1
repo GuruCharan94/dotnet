@@ -6,7 +6,7 @@ redis-64\tools\redis-server.exe --service-install; redis-64\tools\redis-server.e
 choco feature enable -n=allowGlobalConfirmation
 choco install mongodb --version 3.6.0
 choco install mysql --version 5.7.18 
-choco install postgresql --version 9.6.8 --params '/Password:Password12!'
+choco install postgresql --version 9.6.8 --params "Password:$PGPASSWORD"
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
@@ -24,12 +24,4 @@ Start-Process "C:\Program Files\MongoDB\Server\3.6\bin\mongod.exe" -ArgumentList
 
 
 # Build Variables at https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=vsts#build-variables
-if ( $BUILD_REASON -eq "PullRequest" )
-{
-    .\build.ps1 -CreatePackages $true -PullRequestNumber $SYSTEM_PULLREQUEST.PULLREQUESTNUMBER
-}
-
-else
-{
-    .\build.ps1 -CreatePackages $true
-}
+.\build.ps1 -CreatePackages $true -PullRequestNumber $SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
