@@ -15,8 +15,8 @@ if (Test-Path($ChocolateyProfile)) {
 }
 refreshenv
 
-mysql -e "create database test;" --user=root # Create MYSQL DB
-createdb test # Create PostgreSQL DB
+mysql -e "create database test;" --user=root
+createdb test 
 
 mkdir D:\data\db
 # Start MongoDB as run as Background Process
