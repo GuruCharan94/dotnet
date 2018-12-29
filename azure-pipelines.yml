@@ -50,9 +50,10 @@ steps:
     testResultsFiles: '**/Test-*.xml'
     mergeTestResults: true
 
+# PR doesn't create nuget packages. So publish artifact step disabled for PR's
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: packages'
   inputs:
     PathtoPublish: .nupkgs
     ArtifactName: packages
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest')) 
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
