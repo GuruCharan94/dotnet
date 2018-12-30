@@ -6,7 +6,7 @@ redis-64\tools\redis-server.exe --service-install; redis-64\tools\redis-server.e
 choco feature enable -n=allowGlobalConfirmation
 choco install mongodb --version 3.6.0
 choco install mysql --version 5.7.18 
-choco install postgresql --version 9.6.8 --params "Password:$PGPASSWORD"
+choco install postgresql --version 9.6.8 --params "/Password:$PGPASSWORD"
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
