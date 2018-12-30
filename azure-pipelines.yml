@@ -19,12 +19,20 @@ trigger:
   branches:
     include:
     - master
+  paths:
+    exclude:
+    - docs/*
+    - '**/*.md'    
 
 # Trigger builds for PR's targeting master 
 pr:
   branches:
     include:
     - master
+  paths:
+    exclude:
+    - docs/*
+    - '**/*.md' 
 
 steps:
 - task: DotNetCoreInstaller@0
