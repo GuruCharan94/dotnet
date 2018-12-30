@@ -1,4 +1,7 @@
 # Setup Redis with Nuget
+Write-Host $SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
+Write-Host $SYSTEM_PULLREQUEST_PULLREQUESTID
+
 nuget install redis-64 -excludeversion
 redis-64\tools\redis-server.exe --service-install; redis-64\tools\redis-server.exe --service-start
 
@@ -21,7 +24,6 @@ createdb test
 mkdir D:\data\db
 # Start MongoDB as run as Background Process
 Start-Process "C:\Program Files\MongoDB\Server\3.6\bin\mongod.exe" -ArgumentList "--dbpath D:\data\db" -NoNewWindow -RedirectStandardOutput log.txt
-
 
 # Build Variables at https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=vsts#build-variables
 .\build.ps1 -CreatePackages $true -PullRequestNumber $SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
